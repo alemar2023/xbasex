@@ -1,0 +1,9 @@
+<p style="color:green"><%= notice %></p>
+
+<%= render @expansion %>
+
+<div>
+  <%= link_to "edit this expansion", edit_expansion_path(@expansion) %>
+  <%= link_to "back to expansions", expansions_path %>
+  <%= button_to("destroy this expansion",  @expansion,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
+</div>

@@ -1,0 +1,14 @@
+<p style="color:green"><%= notice %></p>
+
+<h2>Brands</h2>
+
+<div id="brands">
+  <% @brands.each do |brand| %>
+  <%= render brand %>
+
+   <%= link_to "Mostra Brand", brand   %>
+
+  <% end %>
+</div>
+
+<%= link_to "New Brand" , new_brand_path, :class => "btn btn-primary"  %>

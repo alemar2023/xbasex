@@ -1,0 +1,26 @@
+<p> Ciao <%= current_user.first_name %>!</p>
+
+<%= form_with(model: property) do |f| %>
+  <% if property.errors.any? %>
+  <div style="color:#770000">
+    <h3><%= pluralize(property.error.count, "error") %> prohibited this game from being saved:</h3>
+    <ul>
+      <% property.errors.each do %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div>
+    <%= f.label :Name, style: "display: block" %>
+    <%= f.text_field :name %>
+  </div>
+
+
+<div>
+  <%= f.submit %>
+</div>
+
+
+<% end %>

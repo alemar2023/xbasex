@@ -1,0 +1,24 @@
+
+<table>
+
+  <tr><td>
+    <p>Welcome <%= @email %>!</p>
+
+    <p>You can confirm your account email through the link below:</p>
+
+  </td></tr>
+  <tr><td>
+    <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+
+  </td></tr>
+<tr>
+  <td>
+    <p> for any questions write to support@xxxxxx.com</p>
+  </td>
+
+</tr>
+
+</table>
+
+

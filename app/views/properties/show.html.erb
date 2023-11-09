@@ -1,0 +1,9 @@
+<p style="color:green"><%= notice %></p>
+
+<%= render @property %>
+<div>
+  <%= link_to "Edit this property", edit_property_path %>
+  <%= link_to "Back to properties", properties_path %>
+
+  <%= button_to("destroy this property",  @property,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
+</div>

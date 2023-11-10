@@ -18,14 +18,14 @@ class PropertiesController < ApplicationController
         format.html { redirect_to properties_url, notice: "Property was succesfully created."}
         format.json { render :show, status: :created, location: @property}
       else
-        format.html { render :new, status::unprocessable_entity}
+        format.html { render :new, status: :unprocessable_entity}
         format.json { render json: @property.errors, status: :unprocessable_entity}
       end
     end
   end
 
   def update
-    respon_to do |format|
+    respond_to do |format|
       if @property.update(property_params)
         format.html { redirect_to properties_url, notice: "Property was succesfully updated!"}
         format.json { render :show, status: ok, location: @property}

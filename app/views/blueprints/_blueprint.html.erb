@@ -1,0 +1,30 @@
+<div id= "<%= dom_id blueprint %>">
+  <p>
+    <strong>Id:</strong>
+    <%= blueprint.id %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= blueprint.blueprint_translations&.first&.name %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%=  blueprint.category.name%>
+  </p>
+
+  <p>
+    <strong>Brand:</strong>
+    <!-- prendo il nome dalla query eseguita all'origine di index nel controller,
+     BRAND è OPZIONALE MA collegato ad expansion (se c'è una esxpansion deve esserci il BRAND collegato
+
+     -->
+    <%= blueprint.brand.name if blueprint.brand %>
+  </p>
+
+
+  <p>
+    <strong>Expansion:</strong>
+    <%= blueprint.expansion.name if blueprint.expansion %>
+  </p>
+
+</div>

@@ -1,0 +1,39 @@
+<h2>New Blueprint</h2>
+
+<p> Hello <%= current_user.first_name %> !</p>
+<%= form_with(model: blueprint_translation) do |form| %>
+
+  <% if blueprint_translation.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(blueprint_translation.errors.count, "error") %>, prohibited this blueprint from being saved:</h3>
+
+      <ul>
+        <%= blueprint_translation.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= form.text_field :blueprint_id, value: @blueprint.id %>
+
+  <div>
+    <%= form.label :locale %>
+    <%= form.collection_select :locale, all_locales, :locale, :locale, {include_blank: "Select a Locale"}%>
+  </div>
+
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<br>
+<div>
+  <%= link_to "back to blueprints", blueprints_path %>
+</div>

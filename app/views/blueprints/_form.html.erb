@@ -1,0 +1,41 @@
+<p> Hello <%= current_user.first_name %> !</p>
+<%= form_with(model: blueprint) do |form| %>
+
+  <% if blueprint.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(blueprint.errors.count, "error") %>, prohibited this blueprint from being saved:</h3>
+
+      <ul>
+        <%= blueprint.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%#= form.hidden_field :blueprint_id, valUE: @blueprint.id %>
+
+  <div>
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, all_categories, :id, :name, {include_blank: "Select a Category"}%>
+
+  </div>
+
+  <div>
+    <%= form.label :brand_id %>
+    <%= form.collection_select :brand_id, all_brands, :id, :name , {include_blank: "Select a Brand"}%>
+  </div>
+
+  <div>
+    <%= form.label :expansion_id %>
+    <%= form.collection_select :expansion_id, all_expansions ,:id, :name , {include_blank: "Select an Expansion"}%>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

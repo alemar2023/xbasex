@@ -30,7 +30,7 @@ class BrandsController < ApplicationController
   def update
     respond_to do |format|
       if @brand.update(brand_params)
-        format.html { redirect_to games_url, notice: "Brand Aggiornato con successo"}
+        format.html { redirect_to brands_url, notice: "Brand Aggiornato con successo"}
         format.json { render :sho, status: :ok, location: @brand}
       else
         format.html { render :edit, status: :unprocessable_entity }

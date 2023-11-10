@@ -3,9 +3,9 @@
 <%= form_with(model: property) do |f| %>
   <% if property.errors.any? %>
   <div style="color:#770000">
-    <h3><%= pluralize(property.error.count, "error") %> prohibited this game from being saved:</h3>
+    <h3><%= pluralize(property.errors.count, "error") %> prohibited this game from being saved:</h3>
     <ul>
-      <% property.errors.each do %>
+      <% property.errors.each do |error| %>
       <li><%= error.full_message %></li>
       <% end %>
     </ul>

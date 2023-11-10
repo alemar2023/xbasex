@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :categories
   resources :brands
-  resources :blueprints
+  resources :blueprints do
+    resources :blueprint_translations
+    resources :blueprint_values
+  end
+
   resources :expansions
   resources :properties
 

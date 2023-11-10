@@ -2,9 +2,9 @@
 
 <%= render @brand %>
 
-<div>
-  <%= link_to "edit this brand" , edit_brand_path(@brand) , class: "btn btn-primary" %>
-  <%= link_to "elenco brands" ,  brands_path , class: "btn btn-primary" %>
+<div style="display:flex">
+  <%= link_to "edit this brand" , edit_brand_path(@brand) %> &nbsp; &nbsp;
+  <%= link_to "elenco brands" ,  brands_path  %> &nbsp; &nbsp;
 
-<%= button_to("destroy this brand",  @brand,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
+  <%= button_to("destroy this brand",  @brand,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
 </div>

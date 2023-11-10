@@ -1,0 +1,25 @@
+<p>Hello <%= current_user.first_name %>!</p>
+
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+  <div style="color:#770000">
+    <h3> <%= pluralize(brand.errors.count "error") %> it is not possible to save this Category</h3>
+    <ul>
+      <%= category.errors.each do %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+<div>
+  <%= form.label :name, style: "display:block" %>
+  <%= form.text_field :name %>
+</div>
+
+<div>
+  <%= form.submit  %>
+</div>
+
+<% end %>

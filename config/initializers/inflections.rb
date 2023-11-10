@@ -14,5 +14,5 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
-inflect.irregular 'property', 'properties'
-inflect.irregular 'category', 'categories'
+#inflect.irregular 'property', 'properties'
+#inflect.irregular 'category', 'categories'

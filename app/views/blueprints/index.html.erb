@@ -16,7 +16,8 @@
           </p>
           <p>
             <strong>Name:</strong>
-            <%= blueprint.blueprint_translations&.first&.name %>
+            <%= blueprint.blueprint_translations.find_by(locale: "en")&.name if blueprint.blueprint_translations %>
+
           </p>
           <p>
             <strong>Category:</strong>

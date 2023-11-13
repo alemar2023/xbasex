@@ -38,6 +38,16 @@
             <%= blueprint.expansion.name if blueprint.expansion %>
           </p>
 
+
+          <p>
+            <strong>Value:</strong>
+            <%= blueprint.properties&.last&.name %>
+            <%= blueprint.blueprint_values&.first&.value %>
+
+          </p>
+
+
+
         </div>
       </div>
     </div>

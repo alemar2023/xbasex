@@ -3,6 +3,7 @@ class Blueprint < ApplicationRecord
   belongs_to :expansion , optional: true
   belongs_to :brand , optional: true
   has_many :blueprint_values
+  has_many :blueprint_details
   has_many :blueprint_translations
   has_many :properties, through: :blueprint_values
 

@@ -3,6 +3,8 @@ class BlueprintsController < ApplicationController
 
   def index
     @blueprints = Blueprint.all.includes(:category, :brand, :expansion, :blueprint_translations,  :blueprint_values )
+
+
   end
 
   def show

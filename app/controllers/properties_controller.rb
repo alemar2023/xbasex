@@ -1,4 +1,5 @@
 class PropertiesController < ApplicationController
+  before_action :set_blueprint_value
   before_action :set_property, only: %i[ show edit update destroy]
   def index
     @properties = Property.all
@@ -46,6 +47,9 @@ class PropertiesController < ApplicationController
   end
 
   private
+  def set_blueprint_value
+    @blueprint_value = BlueprintValue.find(params[:id])
+  end
   def set_property
     @property = Property.find(params[:id])
   end

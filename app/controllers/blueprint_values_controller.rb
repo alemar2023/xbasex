@@ -31,7 +31,7 @@ class BlueprintValuesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @blueprint_value.update(blueprint_values_params)
+      if @blueprint_value.update(blueprint_value_params)
         format.html { redirect_to blueprint_path(@blueprint), notice: "Blueprint Value successfully updated" }
         format.json { render json: @blueprint_value, status: :created }
       else

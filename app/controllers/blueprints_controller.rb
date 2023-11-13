@@ -2,10 +2,14 @@ class BlueprintsController < ApplicationController
   before_action :set_blueprint, only: %i[ show update edit destroy]
 
   def index
-    @blueprints = Blueprint.all.includes(:category, :brand, :expansion, :blueprint_translations)
+    @blueprints = Blueprint.all.includes(:category, :brand, :expansion, :blueprint_translations )
   end
 
   def show
+    @blueprint = Blueprint.find(params[:id])
+    @blueprint_values = @blueprint.blueprint_values.includes(:property)
+    @blueprint_translations = @blueprint.blueprint_translations
+
   end
 
   def new

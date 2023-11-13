@@ -30,38 +30,10 @@
       <strong>Expansion:</strong>
       <%= blueprint.expansion.name if blueprint.expansion %>
     </p>
-    <p>
 
-
-<hr>
-    <p>Values</p>
-    <table>
-
-      <tbody>
-      <% @blueprint_values.each do |value| %>
-        <tr>
-          <td><strong><%= value.property.name %></strong></td>
-          <td><%= value.value %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    </p>
-    <p>
 
     <hr>
-    <p><strong>Translation</strong></p>
-    <table>
-      <tbody>
-      <% @blueprint_translations.each do |translation| %>
-        <tr>
-          <td><%= translation.name %></td>
-          <!--<td><%#= translation.description %></td>-->
-          <td>| <%= translation.locale %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    </p>
+
+
   </div>
 </div>

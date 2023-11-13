@@ -1,10 +1,17 @@
-<%= render @blueprint %>
-<div>
-  <%= link_to "edit this blueprint", edit_blueprint_path(@blueprint) %>
-  <%= link_to "back to blueprint", blueprints_path %>
-  <%= link_to "New_translation", new_blueprint_blueprint_translation_path(:blueprint_id => @blueprint.id) %>
+
+<div id="show_blueprints"  style="display: grid;grid-template-columns: 500px 250px;  grid-auto-rows: 36px !important;">
+  <div>
+    <%= render @blueprint %>
+  </div>
+<div style="display: grid;row-gap:3px;">
+  <%= link_to "edit this blueprint", edit_blueprint_path(@blueprint) , class: "btn btn-secondary"%>
+  <%= link_to "back to blueprint", blueprints_path , class: "btn btn-secondary"%>
+  <%= link_to "New_translation", new_blueprint_blueprint_translation_path(:blueprint_id => @blueprint.id) , class: "btn btn-secondary"%>
   <% if @blueprint.blueprint_translations.present? %>
-  <%= link_to "Edit_Name", edit_blueprint_blueprint_translation_path(@blueprint.blueprint_translations.first, :blueprint_id => @blueprint.id) %>
+  <%= link_to "Edit_Name ", edit_blueprint_blueprint_translation_path(@blueprint.blueprint_translations.first, :blueprint_id => @blueprint.id) , class: "btn btn-secondary"%>
     <% end %>
-  <%= button_to("destroy this blueprint",  @blueprint,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' }   ) %>
+
+  <%= link_to "New Value", new_blueprint_blueprint_value_path(:blueprint_id => @blueprint.id) , class: "btn btn-secondary"%>
+  <%= button_to("destroy this blueprint",  @blueprint,  method: :delete,  data: { turbo_method: 'delete', turbo_confirm: 'Really Destroy?' } , class: "btn btn-danger" , style: "width:100%" ) %>
+</div>
 </div>

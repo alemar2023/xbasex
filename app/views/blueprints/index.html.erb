@@ -1,12 +1,50 @@
 <p style="color:green"><%= notice %></p>
+<%= link_to "New Blueprint", new_blueprint_path , class: "btn btn-success" , style: "float:right;"%>
 <h2> Blueprints</h2>
-<div id="blueprints">
+<div id="blueprints"  style="display: grid;grid-template-columns: 500px 250px; ">
+  <div style="grid-column: 1 / span 2"><hr></div>
   <% @blueprints.each do |blueprint| %>
-    <%= render blueprint %>
-    <p>
-      <%= link_to "show this blueprint", blueprint %>
-    </p>
+    <div>
+      <div id="<%= dom_id blueprint %>" style="display:grid;grid-template-columns: 110px auto;grid-row: 1 / span 2;">
+        <div class="img" style="padding:5px;">
+          <%= image_tag "armed.jpg" , style: "width:100px;height:150px" %>
+        </div>
+        <div>
+          <p>
+            <strong>Id:</strong>
+            <%= blueprint.id %>
+          </p>
+          <p>
+            <strong>Name:</strong>
+            <%= blueprint.blueprint_translations&.first&.name %>
+          </p>
+          <p>
+            <strong>Category:</strong>
+            <%= blueprint.category.name %>
+          </p>
+
+          <p>
+            <strong>Brand:</strong>
+            <!-- prendo il nome dalla query eseguita all'origine di index nel controller,
+             BRAND è OPZIONALE MA collegato ad expansion (se c'è una esxpansion deve esserci il BRAND collegato
+
+             -->
+            <%= blueprint.brand.name if blueprint.brand %>
+          </p>
+
+
+          <p>
+            <strong>Expansion:</strong>
+            <%= blueprint.expansion.name if blueprint.expansion %>
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items: center;justify-content: center">
+      <%= link_to "show this blueprint", blueprint , class: "btn btn-primary"%>
+    </div>
+    <div style="grid-column: 1 / span 2"><hr></div>
   <% end %>
 </div>
 
-<%= link_to "New Blueprint", new_blueprint_path %>

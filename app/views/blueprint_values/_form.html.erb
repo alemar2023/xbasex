@@ -1,0 +1,29 @@
+<p> Hello <%= current_user.first_name %> !</p>
+
+<%= form_with(model: [@blueprint, @blueprint_value]) do |form| %>
+
+  <% if blueprint_value.errors.any? %>
+    <div style="color:#770000">
+      <h3><%= pluralize(blueprint_value.errors.count, "error") %>, prohibited this blueprint value from being saved:</h3>
+
+      <ul>
+        <%= blueprint_value.errors.each do |error| %>
+          <li><%= error.message %></li>
+
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :blueprint_id, value: @blueprint.id %>
+  <div>
+    <div>
+      <%= form.collection_select(:property_id, all_properties, :id, :name, { prompt: "Seleziona una Property" }, class: "form-control") %>
+
+    </div>
+
+    <%= form.label :'Inserisci il valore', style: "display: block" %>
+    <%= form.text_field :value %>
+  </div>
+
+  <%= form.submit "Crea Value" %>
+<% end %>

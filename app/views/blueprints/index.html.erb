@@ -1,13 +1,15 @@
 <p style="color:green"><%= notice %></p>
-<%= link_to "New Blueprint", new_blueprint_path , class: "btn btn-success" , style: "float:right;"%>
+<%= link_to "New Blueprint", new_blueprint_path, class: "btn btn-success", style: "float:right;" %>
 <h2> Blueprints</h2>
-<div id="blueprints"  style="display: grid;grid-template-columns: 500px 250px; ">
-  <div style="grid-column: 1 / span 2"><hr></div>
+<div id="blueprints" style="display: grid;grid-template-columns: 500px 250px; ">
+  <div style="grid-column: 1 / span 2">
+    <hr>
+  </div>
   <% @blueprints.each do |blueprint| %>
     <div>
       <div id="<%= dom_id blueprint %>" style="display:grid;grid-template-columns: 110px auto;grid-row: 1 / span 2;">
         <div class="img" style="padding:5px;">
-          <%= image_tag "armed.jpg" , style: "width:100px;height:150px" %>
+          <%= image_tag "armed.jpg", style: "width:100px;height:150px" %>
         </div>
         <div>
           <p>
@@ -16,7 +18,7 @@
           </p>
           <p>
             <strong>Name:</strong>
-            <%= blueprint.blueprint_translations.find_by(locale: "en")&.name if blueprint.blueprint_translations %>
+            <%= blueprint.en_translation&.name if blueprint.en_translation %>
 
           </p>
           <p>
@@ -40,22 +42,39 @@
           </p>
 
 
-          <p>
-            <strong>Value:</strong>
-            <%= blueprint.properties&.last&.name %>
-            <%= blueprint.blueprint_values&.first&.value %>
-
-          </p>
 
 
+          <% if blueprint.blueprint_values.any? %>
+
+            <% blueprint.blueprint_values.each do |blueprint_value| %>
+              <% if blueprint_value.property.name != 'rarity'  %>
+              <p>
+                <strong style="text-transform: capitalize;"><%= blueprint_value.property.name %>:</strong>
+                <%= blueprint_value.value %>
+              </p>
+                <% end %>
+            <% end %>
+
+          <% else %>
+            <p>No blueprint values available for this blueprint.</p>
+          <% end %>
+
+
+
+<% if  blueprint.rarity&.value? %>
+
+          <p style="color:red"><strong>Rarity:</strong> <%= blueprint.rarity&.value %></p>
+<% end %>
 
         </div>
       </div>
     </div>
     <div style="display:flex;align-items: center;justify-content: center">
-      <%= link_to "show this blueprint", blueprint , class: "btn btn-primary"%>
+      <%= link_to "show this blueprint", blueprint, class: "btn btn-primary" %>
     </div>
-    <div style="grid-column: 1 / span 2"><hr></div>
+    <div style="grid-column: 1 / span 2">
+      <hr>
+    </div>
   <% end %>
 </div>
 

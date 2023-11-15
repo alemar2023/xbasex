@@ -1,21 +1,23 @@
 class BlueprintsController < ApplicationController
   before_action :set_blueprint, only: %i[ show update edit destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   def index
-    @blueprints = Blueprint.all.includes(:category, :brand, :expansion, :blueprint_translations,  :blueprint_values )
+    @blueprints = Blueprint.all.includes(:category, :brand, :expansion, :rarity, :property,    :en_translation , blueprint_values: :property   )
 
-
+    #@blueprints = Blueprint.includes(blueprint_values: :property).all
   end
 
   def show
     @blueprint = Blueprint.find(params[:id])
     @blueprint_values = @blueprint.blueprint_values.includes(:property)
     @blueprint_translations = @blueprint.blueprint_translations
-
   end
 
   def new
     @blueprint = Blueprint.new
+    @blueprint.blueprint_translations.build
+    @blueprint.blueprint_values.build
+
   end
 
   def edit
@@ -64,7 +66,11 @@ class BlueprintsController < ApplicationController
   end
 
   def blueprint_params
-    params.require(:blueprint).permit(:id, :category_id, :brand_id, :expansion_id)
+    params.require(:blueprint).permit(
+      :id, :category_id, :brand_id, :expansion_id,
+      blueprint_translations_attributes: [:id, :name, :locale],
+     blueprint_values_attributes: [:id, :property_id, :value]
+    )
   end
 
 end

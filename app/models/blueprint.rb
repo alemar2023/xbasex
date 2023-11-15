@@ -5,9 +5,15 @@ class Blueprint < ApplicationRecord
   has_many :blueprint_values
   has_many :blueprint_details
   has_many :blueprint_translations
-  has_many :properties, through: :blueprint_values
 
+  #accepts_nested_attributes_for :blueprint_translations
+  accepts_nested_attributes_for :blueprint_translations, :blueprint_values
+
+  #has_many :properties, through: :blueprint_values
+  has_one :en_translation, -> { where(locale: "en")} , class_name: "BlueprintTranslation"
   validate :valid_brand?
+  has_many :property, through: :blueprint_values
+  has_one :rarity, -> { joins(:property).where(properties: { name: 'rarity' }) }, class_name: 'BlueprintValue'
 
   def valid_brand?
     #se espansionje preseente anche il brand deve sesere presente
@@ -20,5 +26,15 @@ class Blueprint < ApplicationRecord
     end
 
   end
+
+
+
+
+  # Accessing all blueprint_values associated with a blueprint
+  #blueprint = Blueprint.find(1)
+  #blueprint_values = blueprint.blueprint_values
+
+  # Accessing the properties associated with a blueprint through blueprint_values
+  #properties = blueprint_values.map(&:property)
 
 end

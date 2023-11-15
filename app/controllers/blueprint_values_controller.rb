@@ -1,7 +1,7 @@
 class BlueprintValuesController < ApplicationController
   before_action :set_blueprint
   before_action :set_blueprint_value, only: %i[ show edit update destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
 
 
   def show

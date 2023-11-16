@@ -29,12 +29,4 @@ class Blueprint < ApplicationRecord
 
 
 
-
-  # Accessing all blueprint_values associated with a blueprint
-  #blueprint = Blueprint.find(1)
-  #blueprint_values = blueprint.blueprint_values
-
-  # Accessing the properties associated with a blueprint through blueprint_values
-  #properties = blueprint_values.map(&:property)
-
 end

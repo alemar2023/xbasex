@@ -11,6 +11,9 @@ gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "jbuilder"
 
+#gem 'ancestry'
+
+#gem 'acts_as_tree', '~> 2.9.1'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

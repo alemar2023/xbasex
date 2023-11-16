@@ -1,39 +1,31 @@
-<%= form_with(model: division || voice, local: true) do |form| %>
-  <% if division&.errors&.any? || voice&.errors&.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(division&.errors&.count || voice&.errors&.count, "error") %> prohibited this <%= division ? 'division' : 'voice' %> from being saved:</h2>
+<%= form_with(model: @division, url: divisions_path, local: true) do |form| %>
 
-      <ul>
-        <% (division&.errors&.full_messages || voice&.errors&.full_messages).each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+
+  <!-- Voices fields -->
+  <div>
+    <%= form.fields_for :voices do |voice_form| %>
+      <div>
+        <%= voice_form.label :name %>
+        <%= voice_form.text_field :name %>
+      </div>
+
+      <div>
+        <%= voice_form.label :locale %>
+        <%= voice_form.select :locale, options_for_select(['en', 'fr', 'es']) %>
+      </div>
+    <% end %>
   </div>
 
-  <% if division %>
-    <!-- Division-specific form fields -->
-    <div class="field">
-      <%= form.label :parent_id %>
-      <%= form.collection_select :parent_id, Division.all, :id, :id, { prompt: 'Select Parent (Optional)' } %>
-    </div>
-  <% elsif voice %>
+
     <!-- Voice-specific form fields -->
     <div class="field">
       <%= form.label :division_id %>
-      <%= form.collection_select :division_id, Division.all, :id, :id, { prompt: 'Select Division' } %>
+      <%= form.collection_select :parent_id, Voice.all, :division_id, :name, { prompt: 'Select Division' } %>
     </div>
 
-    <div class="field">
-      <%= form.label :locale %>
-      <%= form.text_field :locale, value: 'en' %>
-    </div>
-  <% end %>
+
+
 
   <div class="actions">
     <%= form.submit %>

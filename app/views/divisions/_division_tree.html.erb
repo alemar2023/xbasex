@@ -1,0 +1,9 @@
+<!-- app/views/divisions/_division_tree.html.erb -->
+<ul>
+  <% divisions.each do |division| %>
+    <li>
+      <%= division.voices.find_by(locale: 'en')&.name %>
+      <%= render 'division_tree', divisions: division.children %>
+    </li>
+  <% end %>
+</ul>

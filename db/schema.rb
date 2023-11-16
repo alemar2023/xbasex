@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_15_145315) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_16_134714) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,6 +126,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_15_145315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["division_id"], name: "index_voices_on_division_id"
+    t.index ["locale", "division_id"], name: "index_voices_on_locale_and_division_id", unique: true
+    t.index ["locale"], name: "index_voices_on_locale"
+    t.index ["name"], name: "index_voices_on_name"
   end
 
   add_foreign_key "blueprint_translations", "blueprints"

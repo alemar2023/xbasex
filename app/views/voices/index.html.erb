@@ -1,0 +1,42 @@
+<h1>Voices</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Division ID</th>
+    <th>Locale</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @voices.each do |voice| %>
+    <tr>
+      <td><%= voice.id %></td>
+      <td><%= voice.name %></td>
+      <td><%= voice.division_id %></td>
+      <td><%= voice.locale %></td>
+      <td><%= link_to 'Show', voice %></td>
+      <td><%= link_to 'Edit', edit_voice_path(voice) %></td>
+      <td><%= link_to 'Destroy', voice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<p>ciao</p>
+<table>
+  <tr>
+    <td> Test funzione da casa </td>
+
+  </tr>
+  <tr>
+
+    <td>Test funzione da ufficio e devo tenre tutte e due</td>
+  </tr>
+
+</table>
+<gitp>ciao</gitp>
+<p>ciao</p>
+<p>ciao</p>
+
+<%= link_to 'New Voice', new_voice_path %>

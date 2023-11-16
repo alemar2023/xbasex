@@ -1,0 +1,55 @@
+<h1>Categories</h1>
+
+<table class="table" >
+  <tr>
+    <th>Name</th>
+    <th>Parent</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @cats.each do |cat| %>
+    <tr>
+      <td><%= cat.name %></td>
+      <td><%= cat.parent&.name || 'None' %></td>
+
+      <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
+       </tr>
+  <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Cat', new_cat_path %>
+<hr>
+<ul>
+  <% @root_cats.each do |cat| %>
+    <li><%= cat.name %></li>
+  <% end %>
+</ul>
+
+<hr>
+<!-- app/views/cats/index.html.erb -->
+<!-- app/views/cats/index.html.erb -->
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Parent</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @root_cats.each do |cat| %>
+    <tr>
+      <td><%= cat.name %></td>
+      <td><%= cat.parent&.name || 'None' %></td>
+    </tr>
+    <% cat.children.each do |child| %>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp; <%= child.name %></td>
+        <td><%= child.parent&.name || 'None' %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+

@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :expansions
   resources :properties
-  resources :divisions
   resources :voices
+
+  resources :divisions, only: [:index, :new, :edit, :create]
 
   resources :cats, only: [:index, :new, :edit, :create]
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

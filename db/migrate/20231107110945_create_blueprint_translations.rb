@@ -7,6 +7,7 @@ class CreateBlueprintTranslations < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    
     add_index :blueprint_translations, :name
     add_index :blueprint_translations, :locale
     add_index :blueprint_translations, [:locale , :blueprint_id ], unique: true

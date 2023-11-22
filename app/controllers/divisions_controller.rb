@@ -2,10 +2,13 @@ class DivisionsController < ApplicationController
   before_action :set_division, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
   def index
-    # @divisions = Division.all.includes(:voice)
-    # @root_items = Division.where(parent_id: nil).includes(:voices)
-    #@child_items = Division.where.not(parent_id: nil).includes(:voices)
-     @divisions = Division.includes(:children, :voices)
+    @divisions = Division.all.includes(:eng_translation, children: [:eng_translation, children: :eng_translation ], ).where(parent_id: nil)
+    #@divisions = @divisions = Division.includes(:children, :voices)
+
+    #@divisions = Division.all.includes( :children, :voices  )
+    #@root_divs = Division.parent_divs
+    #@divisions = Division.includes(:voices).where(parent_id:)
+
   end
 
   def new
@@ -15,6 +18,10 @@ class DivisionsController < ApplicationController
   end
 
   def create
+
+
+
+
     @division = Division.new(division_params)
 
     if @division.save

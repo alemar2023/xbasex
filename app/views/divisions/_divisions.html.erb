@@ -1,0 +1,8 @@
+<ul>
+  <% divisions.each do |subdivision| %>
+    <li>
+      <%= subdivision.eng_translation.name %>
+      <%= render 'divisions/subdivisions', divisions: subdivision.children %>
+    </li>
+  <% end %>
+</ul>

@@ -3,7 +3,7 @@
 
   <% if expansion.errors.any? %>
   <div style="color:#770000">
-    <h3><%= pluralize(expansion.errors.count, "error") %>, prohibited this gaem from being saved:</h3>
+    <h3><%= pluralize(expansion.errors.count, "error") %>, prohibited this brand from being saved:</h3>
     <ul>
       <%= expansion.errors.each do |error| %>
       <li><%= error.full_message %></li>

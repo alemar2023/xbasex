@@ -1,13 +1,14 @@
 class BlueprintTranslationsController < ApplicationController
    before_action :set_blueprint
    before_action :set_blueprint_translation , only: %i[show edit update destroy]
-   before_action :authenticate_user!, except: [:index, :show]
+   #before_action :authenticate_user!, except: [:index, :show]
    def show
 
    end
 
   def new
     @blueprint_translation = BlueprintTranslation.new
+    
   end
   def edit
   end
